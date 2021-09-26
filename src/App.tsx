@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
+import Home from "./Home";
 
 function App() {
   return (
@@ -109,7 +110,7 @@ function App() {
           </div>
         </Route>
         <Route path="/">
-          <div>Hello World!</div>
+          <Home />
         </Route>
       </Switch>
     </BrowserRouter>
