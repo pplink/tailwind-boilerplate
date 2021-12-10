@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import clsx from "clsx";
 
 const icons = [
   /* eslint-disable react/jsx-key */
@@ -40,7 +41,10 @@ function App() {
   return (
     <div className="fixed inset-0 bg-gray-100 flex">
       <div className="rounded-full bg-white w-12 h-12 m-auto overflow-hidden">
-        <div className="duration-500" style={style}>
+        <div
+          className={iconIndex !== 0 ? "duration-500" : undefined}
+          style={style}
+        >
           {icons.map((icon, index) => {
             return (
               <div
