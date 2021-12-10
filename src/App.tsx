@@ -16,13 +16,17 @@ function App() {
   useEffect(() => {
     const animationDelay = 200;
     const animationDuration = 500;
-    const nextIconTimer = setTimeout(() => {
-      const nextIconIndex = iconIndex + 1;
-      if (nextIconIndex >= icons.length) {
+    if (iconIndex >= icons.length) {
+      /* Replace with the first icon without notice */
+      const resetIconTimer = setTimeout(() => {
         setIconIndex(0);
-      } else {
-        setIconIndex(nextIconIndex);
-      }
+      }, animationDuration);
+      return () => {
+        clearTimeout(resetIconTimer);
+      };
+    }
+    const nextIconTimer = setTimeout(() => {
+      setIconIndex(iconIndex + 1);
     }, animationDelay + animationDuration);
     return () => {
       clearTimeout(nextIconTimer);
@@ -47,6 +51,9 @@ function App() {
               </div>
             );
           })}
+          <div className="w-12 h-12 flex items-center justify-center">
+            {icons[0]}
+          </div>
         </div>
       </div>
     </div>
