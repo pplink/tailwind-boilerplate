@@ -15,6 +15,7 @@ function App() {
   const [iconIndex, setIconIndex] = useState(0);
   useEffect(() => {
     const animationDelay = 200;
+    const animationDuration = 500;
     const nextIconTimer = setTimeout(() => {
       const nextIconIndex = iconIndex + 1;
       if (nextIconIndex >= icons.length) {
@@ -22,7 +23,7 @@ function App() {
       } else {
         setIconIndex(nextIconIndex);
       }
-    }, animationDelay);
+    }, animationDelay + animationDuration);
     return () => {
       clearTimeout(nextIconTimer);
     };
@@ -35,7 +36,7 @@ function App() {
   return (
     <div className="fixed inset-0 bg-gray-100 flex">
       <div className="rounded-full bg-white w-12 h-12 m-auto overflow-hidden">
-        <div style={style}>
+        <div className="duration-500" style={style}>
           {icons.map((icon, index) => {
             return (
               <div
