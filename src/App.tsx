@@ -26,9 +26,12 @@ function App() {
         clearTimeout(resetIconTimer);
       };
     }
-    const nextIconTimer = setTimeout(() => {
-      setIconIndex(iconIndex + 1);
-    }, animationDelay + animationDuration);
+    const nextIconTimer = setTimeout(
+      () => {
+        setIconIndex(iconIndex + 1);
+      },
+      iconIndex === 0 ? animationDelay : animationDelay + animationDuration
+    );
     return () => {
       clearTimeout(nextIconTimer);
     };
