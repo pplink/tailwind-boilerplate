@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 const icons = [
   /* eslint-disable react/jsx-key */
@@ -27,10 +27,26 @@ function App() {
       clearTimeout(nextIconTimer);
     };
   }, [iconIndex]);
+  const iconContainer = useMemo(() => {
+    return (
+      <div className="slide">
+        {icons.map((icon, index) => {
+          return (
+            <div
+              className="w-12 h-12 flex items-center justify-center"
+              key={index}
+            >
+              {icon}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }, []);
   return (
     <div className="fixed inset-0 bg-gray-100 flex">
-      <div className="rounded-full bg-white w-12 h-12 m-auto flex items-center justify-center">
-        {icons[iconIndex]}
+      <div className="rounded-full bg-white w-12 h-12 m-auto overflow-hidden">
+        {iconContainer}
       </div>
     </div>
   );
